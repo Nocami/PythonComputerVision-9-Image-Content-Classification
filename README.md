@@ -83,7 +83,7 @@ for i, pklfile in enumerate(pklist):
 show()
 ~~~  
 上述代码载入训练数据来创建一个KNN分类器模型，并载入另外的测试数据集来对测试数据点进行分类。最后的部分可视化这些测试点（如下图：）  
-![image](1.jpg)  
+![image](https://github.com/Nocami/PythonComputerVision-9-Image-Content-Classification/blob/master/image/1.jpg)  
 用K邻近分类器分类二维数据，每个示例中，不同颜色代表类标记，正确分类的点用星星表示，错误的用圆点表示，曲线是分类器的决策边界。  
 ## 二.计算机视觉快速特征描述子--稠密SIFT（dense sift）
 dense SIFT在目标分类和场景分类有重要的应用。该算法首先将表达目标的区域分成相同大小的区域块,计算每一个小块的SIFT特征,再对各个小块的稠密SIFT特征在中心位置进行采样,建模目标的表达。然后度量两个图像区域的不相似性,先计算两个区域对应小块的巴氏距离,再对各距离加权求和作为两个区域间的距离。因为目标所在区域靠近边缘的部分可能受到背景像素的影响,而区域的内部则更一致,所以越靠近区域中心权函数的值越大。  
@@ -104,7 +104,7 @@ show()
 ~~~
 其他相关代码可以用之前博客介绍过的执行角本通过添加一些额外的参数来得到稠密sift特征。  
 使用用于定位描述子的局部梯度方向（force_orientation设置为真），该代码可以在整个图像中计算出dense SIFT特征。下图显示了这些位置：  
-![image](2.jpg)  
+![image](https://github.com/Nocami/PythonComputerVision-9-Image-Content-Classification/blob/master/image/2.jpg)  
 ## 三.图像分类：手势识别
 在这个示例中，使用dense SIFT描述子来表示这些手势图像，并建立一个简单的手势识别系统。我这里用自己的手进行比划拍照，共有6种手势，每种40张图片。  
 下面这段代码展示了6类简单手势图像的dense SIFT描述子：  
@@ -134,7 +134,7 @@ for i, im in enumerate(imlist):
 show()
 其中，10，5指的是对图像进行SIFT特征计算的次数。  
 ~~~
-![image](3.jpg)  
+![image](https://github.com/Nocami/PythonComputerVision-9-Image-Content-Classification/blob/master/image/3.jpg)  
 
 下面我们可以使用一些代码来读取训练集与测试集，我采用的数据集为自己拍摄的自己左手照片，其中训练集180张，测试集50-60张。  
 需要**特别注意**的是：图片的命名方式决定了最后的混淆矩阵的布局，这里推荐使用**字母+uniform+编号**的方式，如“B-uniform01”。  
@@ -201,7 +201,8 @@ print ('Accuracy:', acc)
 print_confusion(res,test_labels,classnames)
 
 ~~~
-![image](5.jpg)  
+![image](https://github.com/Nocami/PythonComputerVision-9-Image-Content-Classification/blob/master/image/5.jpg)  
 上图展示我个人数据集的一部分。  
-![image](4.jpg)  
+![image](https://github.com/Nocami/PythonComputerVision-9-Image-Content-Classification/blob/master/image/4.jpg)  
 最终，我这个示例的正确率达到了98%，其混淆矩阵如上图：  
+**特别说明：**B指汉语“布”，G指good竖大拇指，L指垃圾竖小拇指，F指非常六加一，V指胜利，O指OK。
